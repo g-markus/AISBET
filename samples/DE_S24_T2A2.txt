@@ -1,0 +1,58 @@
+# Die Aufgabe bezieht sich auf die folgende Ausgangssituation
+Die AMAG Softa AG ist ein Hersteller von Batterien und Akkus für E-Bikes, E-Scooter, Pedelecs und E-Roller.
+
+Zur jährlichen Aktionärsversammlung treffen sich die Aktionäre am Stammsitz.
+
+Die AMAG Soft AG möchte ihren Aktionären künftig einen E-Service mit verschiedenen Anwendungsmöglichkeiten anbieten.
+
+Zur Realisierung dieses Projekts "Aufbau einer E-Service-Plattform" für Aktionäre der AMAG Soft AG wird eine Projektgruppe gegründet, in der Sie mitarbeiten sollen.
+
+# 1. Aufgabe
+
+Die Geschäftsleitung möchte Aktiennotierungen nach einem beliebigen Kriterium sortieren können. Daher soll für den Vergleich innerhalb des Sortieralgorithmus eine Vergleichsfunktion verwendet werden. Es existiert bereits eine Klasse Tageskurs, die Informationen zu einer Aktie bereitstellt. Ausserdem ist ein Array kurse vorhanden, in dem Objekte vom Typ Tageskurs gespeichert sind.
+
+## Klasse Tageskurs
+
+@startuml
+class Tageskurs {
+    - datum : Date
+    - aktienkurs : double
+    - daxWert : double
+    - prozVAktie : double // prozentuale Veränderung Aktie zum Vortageswert
+    - prozVDAX : double // prozentuale Vergleich DAX zum Vortageswert
+}
+@enduml
+
+Für jedes Attribut gibt es öffentliche get-Methoden.
+
+## Auflistung der Daten der Tageskurs-Objekte aus dem Array kurse
+
+|datum|aktienkurs|daxWert|prozVAktie|prozVDAX|
+|---|---|---|---|---|
+|15.04.2024|100|15000|0.0300|0.0500|
+|16.04.2024|105|15100|0.0500|0.0067|
+|17.04.2024|110|14900|0.0476|-0.0132|
+|...|||||
+
+## a) Für die Sortierfunktion sort(Tageskurs[] kurse, Function vergleiche): void wird das Function-Objekt vergleiche übergeben.
+
+Die im Function-Objekt vorhandene Funktion kann im Sortieralgorithmus wie folgt aufgerufen werden:
+vergleiche(tageskursA, tageskursB)
+
+Die Vergleichsfunktion liefert einen Wert > 0 zurück, wenn tageskursB vor tageskursA sortiert werden soll.
+
+Geben Sie einen Sortieralgorithmus eigener Wahl im Pseudocode an und nennen Sie den gewählten Sortieralgorithmus.
+
+sort (Tageskurs[] kurse, Function vergleiche) : void
+
+## b) Die Geschäftsleitung möchte wissen, an wie vielen Tagen der Aktienkurs der AMAG Soft AG "besser" notiert war als der DAX an diesem Tag.
+
+Die prozentualen Veränderungen des Aktienkurses und des DAX-Wertes gegenüber dem Vortag stehen in den Objekten der Klasse Tageskurs.
+
+Die Notierung des Aktienkurses wird als "besser" als der DAX bezeichnet, wenn die prozentuale Veränderung des Aktienkurses größer war als die des DAX.
+
+Die entsprechenden Daten sind in dem Array kurse vom Typ Tageskurs vorhanden.
+
+Erstellen Sie einen Algorithmus für eine Funktion notierungPlus(Tageskurs[] kurse) :Integer, der ermittelt, an wie vielen Tagen die prozentuale Veränderung des Aktienkurses "besser" war als die des DAX und diesen Wert zurückgibt.
+
+notierungPlus(Tageskurs[] kurse):Integer

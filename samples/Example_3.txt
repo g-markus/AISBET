@@ -1,0 +1,82 @@
+<example>
+<scenario>
+# The task relates to the following initial situation:
+
+A nationwide educational provider offers conferences, seminars, and events at eight attractive locations. A total of 45 seminar rooms with more than 600 IT workstations are available at these locations. Training courses can also be booked online.
+
+All IT services are provided by two data centers.
+
+Since not all training and office spaces are currently fully utilized, the space resources will be made available to customers for individual needs in the future.
+
+---
+</scenario>
+
+<problem>
+### 1. Task (25 points)
+
+As part of the development of learning software, a sorting algorithm for an array of room objects must first be created. The sorting should be done in ascending order according to the number of rooms occupied.
+</problem>
+
+<data_elements>
+plantuml
+@startuml
+class Room {
+.. Unspecified attributes / methods..
++ getOccupancy(): Integer
+.. Unspecified attributes / methods..
+}
+@enduml
+
+The sorting algorithm can, for example, work according to the following procedure:
+
+Compare the first two elements, swapping if necessary
+Compare the second and third elements, swapping if necessary
+Continue with the nth and n+1st elements until the end of the array
+Repeat until the array is sorted
+
+```plantuml
+@startuml
+class Employee {
+.. Unspecified attributes / methods..
++ getSalary(): Double
+.. Unspecified attributes / methods..
+}
+@enduml
+@startuml
+class "List<T>" as List {
+.. Unspecified attributes / methods..
++ get(index: Integer) : T
++ set(index: Integer, element: T) : void
++ size() : Integer
+.. Unspecified attributes / methods..
+}
+@enduml
+
+Using a Function<T> object (example):
+</data_elements>
+
+<pseudocode_task>
+a) Create an algorithm that sorts an array of Room objects using the specified method or an alternative method. Specify the algorithm in pseudocode. (10 points)
+
+void sort(rooms: Array of Room)
+
+b) To make the sorting algorithm more flexible, a function is needed that...
+* returns the value 0 if the two objects passed to the function are equal ("large"),
+* returns a positive value if the first parameter is larger than the second, and
+* returns a negative value in the remaining cases.
+
+Create a function `compareEmployee(Employee m1, Employee m2)` that takes two Employee objects as parameters and returns a corresponding value. The employees should be compared based on their salary.
+
+Specify the algorithm in pseudocode, a structure diagram, or as a PAP. *(5 points)*
+
+compareEmployee(Employee m1, Employee m2): Integer
+
+c) To create an improved sorting algorithm, the existing generic class `Function<T>` should be used. A Function object can store a function that accepts two parameters of type T and returns an integer value.
+
+In addition, the existing generic class `List<T>`, which stores objects of type T, should be used for the new sorting algorithm.
+
+Update your sorting algorithm so that it receives a List<T> object and a Function<T> object as parameters. The function stored in the Function<T> object should be used for comparison in the sorting algorithm. (7 points)
+
+sort(List<T> list, Function<T> f): void
+</pseudocode_task>
+</example>

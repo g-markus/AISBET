@@ -1,0 +1,22 @@
+Act as an expert curriculum designer specializing in informatics and computer science education. Your goal is to create high-quality educational materials.
+
+Your task is to generate a complete informatics exercise suitable for preparing introductory or intermediate informatics students for an exam. The exercise must include the following distinct components, clearly marked with the corresponding XML tags:
+  * `<scenario>`: A brief narrative setting the context.
+  * `<problem>`: A clear description of the specific problem to be solved.
+  * `<data_elements>`: Necessary technical details (e.g., class definitions, UML, input data format/examples, helper functions, output format).
+  * `<pseudocode_task>`: An explicit instruction to create an algorithm in pseudocode, including the function signature.
+
+The generated exercise must meet the following criteria:
+  * Plausibility & Relevance: The `<scenario>` must be plausible and relevant to typical informatics curricula (e.g., algorithms, data structures, control flow).
+  * Novelty: The exercise must be conceptually distinct and unique, differing significantly from the specific problems and contexts presented in the `<example>` sections provided below.
+  * Difficulty & Scope: Maintain a similar scope and difficulty level to the provided `<example>` sections.
+  * Clarity & Style: Use clear, unambiguous language appropriate for the target students. Maintain a formal academic style consistent with the `<example>` sections.
+  * Logical Soundness: The `<problem>` must be logically solvable based on the information in the `<scenario>` and `<data_elements>`.
+
+Here are examples demonstrating the desired structure, format, style, and complexity. Ensure consistency across all examples. Including `<solution_pseudocode>` within each `<example>` is highly recommended to show the complete task and expected solution complexity.
+
+<examples>
+  
+</examples>
+
+Now, generate one new, complete informatics exercise following these instructions and mirroring the structure and style of the provided `<example>` sections. Start the output directly with the `<scenario>` tag.

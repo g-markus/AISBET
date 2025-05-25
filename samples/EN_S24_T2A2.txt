@@ -1,0 +1,58 @@
+# The task relates to the following initial situation:
+AMAG Softa AG is a manufacturer of batteries and accumulators for e-bikes, e-scooters, pedelecs, and e-scooters.
+
+The shareholders meet at the headquarters for their annual shareholders' meeting.
+
+AMAG Soft AG would like to offer its shareholders an e-service with various application options in the future.
+
+To implement this project, "Developing an e-service platform" for shareholders of AMAG Soft AG, a project group is being formed, in which you are to participate.
+
+# 1. Task
+
+Management would like to be able to sort stock prices according to any criterion. Therefore, a comparison function should be used for comparison within the sorting algorithm. A Daily Price class already exists that provides information about a stock. There is also an array kurse that stores objects of the Daily Price type.
+
+## Daily Price class
+
+@startuml
+class Daily Price {
+- date : Date
+- shareprice : double
+- daxValue : double
+- prozVShare : double // percentage change of share compared to the previous day's value
+- prozVDAX : double // percentage comparison of DAX to the previous day's value
+}
+@enduml
+
+There are public get methods for each attribute.
+
+## Listing the data of the daily price objects from the prices array
+
+|date|shareprice|daxValue|prozVShare|prozVDAX|
+|---|---|---|---|---|
+|April 15, 2024|100|15000|0.0300|0.0500|
+|April 16, 2024|105|15100|0.0500|0.0067|
+|17.04.2024|110|14900|0.0476|-0.0132|
+|...|||||
+
+## a) For the sorting function sort(DailyPrice[] prices, Function compare): void, the Function object compare is passed.
+
+The function contained in the Function object can be called in the sorting algorithm as follows:
+compare(dailyPriceA, dailyPriceB)
+
+The compare function returns a value > 0 if dailyPriceB should be sorted before dailyPriceA.
+
+Specify a sorting algorithm of your choice in the pseudocode and name the selected sorting algorithm.
+
+sort (DailyPrice[] prices, Function compare) : void
+
+## b) Management wants to know on how many days the AMAG Soft AG share price was "better" than the DAX on that day.
+
+The percentage changes in the stock price and the DAX value compared to the previous day are stored in the objects of the Daily Price class.
+
+The stock price quote is considered "better" than the DAX if the percentage change in the stock price was greater than that of the DAX.
+
+The corresponding data is contained in the array prices of type Daily Price.
+
+Create an algorithm for a function quotePlus(Daily Price[] prices) :Integer that determines on how many days the percentage change in the stock price was "better" than that of the DAX and returns this value.
+
+quotePlus(Daily Price[] prices):Integer

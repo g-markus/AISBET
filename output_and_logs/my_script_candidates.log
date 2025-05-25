@@ -1,0 +1,77 @@
+Starting script execution...
+Google AI SDK configured successfully.
+Generation Config: GenerationConfig(candidate_count=3, stop_sequences=None, max_output_tokens=4096, temperature=1.0, top_p=None, top_k=None, response_mime_type=None, response_schema=None, presence_penalty=None, frequency_penalty=None)
+Loading prompt and examples...
+Loaded prompt template from: samples\prompt_no_examples_2.txt
+Loading examples...
+   - Loaded: samples\Example_1.txt
+   - Loaded: samples\Example_2.txt
+   - Loaded: samples\Example_3.txt
+   - Loaded: samples\Example_4.txt
+   - Loaded: samples\Example_5.txt
+Loaded 5 examples successfully. Shuffling their order...
+Examples shuffled.
+Shuffled example order: ['Example_5.txt', 'Example_1.txt', 'Example_4.txt', 'Example_2.txt', 'Example_3.txt']
+Prompt constructed successfully.
+First 100 chars of final prompt: Act as an expert curriculum designer specializing in informatics and computer science education. You...
+Using model: gemini-1.5-pro-latest
+Generative model 'gemini-1.5-pro-latest' instantiated.
+Prompt saved to: prompt_used_20250505_202004.md
+Sending prompt to API using model gemini-1.5-pro-latest, requesting 3 candidates...
+Received response from API.
+Received response with 3 candidate(s). Processing...
+--- Processing Candidate 1 of 3 ---
+Candidate 1 has text content.
+Unexpected error processing candidate 1: module 'google.generativeai.types' has no attribute 'FinishReason'
+Traceback (most recent call last):
+  File "c:\studium\trainer\trainer\googleAI_x3.py", line 214, in <module>
+    finish_reason_str = genai.types.FinishReason(finish_reason_val).name
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'google.generativeai.types' has no attribute 'FinishReason'
+Candidate 1 raw object: content {
+  parts {
+    text: "<scenario>\n# The task relates to the following initial situation:\n\nThe online retailer \"Bookworm Paradise\" is experiencing rapid growth and needs to optimize its warehouse management system.  Currently, books are stored on shelves identified by a unique alphanumeric code.  The system keeps track of the quantity of each book title on each shelf.  However, retrieving books efficiently has become a challenge due to the increasing number of shelves and the lack of an organized retrieval strategy.\n</scenario>\n\n<problem>\n# 1. Task\n\nBookworm Paradise wants to implement a system that guides warehouse workers to retrieve books in the most efficient way.  Given a list of book titles to retrieve and their locations (shelf codes and quantities), the system should generate a retrieval plan that minimizes the total distance traveled within the warehouse.  Assume the warehouse layout is a grid, and the distance between shelves can be calculated using the Manhattan distance.\n</problem>\n\n<data_elements>\n## Shelf Location Class\n\nThe `ShelfLocation` class represents the location of a book title in the warehouse.\n\n@startuml\nclass ShelfLocation {\n- shelfCode : String\n- quantity : Integer\n- x : Integer\n- y : Integer\n}\n@enduml\n\nPublic getter methods are available for each attribute.  The `x` and `y` attributes represent the coordinates of the shelf in the warehouse grid.\n\n## Book Retrieval Request Class\n\nThe `BookRetrievalRequest` class represents a request to retrieve a specific book title.\n\n@startuml\nclass BookRetrievalRequest {\n- title : String\n- locations : List<ShelfLocation>\n}\n@enduml\n\nPublic getter methods are available for each attribute. The `locations` attribute is a list of `ShelfLocation` objects indicating where the requested book can be found and in what quantities.\n\n## Input Data\n\nThe input to the retrieval planning algorithm is a list of `BookRetrievalRequest` objects.\n\n## Helper Function: Manhattan Distance\n\nA helper function `manhattanDistance(x1: Integer, y1: Integer, x2: Integer, y2: Integer): Integer` is available to calculate the Manhattan distance between two points in the grid.\n\n## Output Format\n\nThe output of the retrieval planning algorithm should be a list of `ShelfLocation` objects representing the order in which the shelves should be visited to retrieve the requested books.  The quantities in the `ShelfLocation` objects in the output list should reflect the number of books to be retrieved from each shelf.\n</data_elements>\n\n<pseudocode_task>\nDevelop an algorithm in pseudocode for a function:\n\n`generateRetrievalPlan(requests: List<BookRetrievalRequest>): List<ShelfLocation>`\n\nthat takes a list of `BookRetrievalRequest` objects as input and returns a list of `ShelfLocation` objects representing the optimal retrieval plan. The algorithm should minimize the total Manhattan distance traveled within the warehouse.\n\nEnsure the returned `List<ShelfLocation>` contains only the necessary shelves to fulfill the requests, with the correct quantities to retrieve from each shelf. The algorithm should determine both *which* shelves to visit and *in what order* to visit them for optimal efficiency. Consider cases where a book title might be available on multiple shelves.\n\nRepresent the algorithm in pseudocode.\n\ngenerate_retrieval_plan(requests: List<Book_Retrieval_Request>) : List<Shelf_Location>\n\n</pseudocode_task>\n"
+  }
+  role: "model"
+}
+finish_reason: STOP
+avg_logprobs: -0.13228022114614421
+
+--- Processing Candidate 2 of 3 ---
+Candidate 2 has text content.
+Unexpected error processing candidate 2: module 'google.generativeai.types' has no attribute 'FinishReason'
+Traceback (most recent call last):
+  File "c:\studium\trainer\trainer\googleAI_x3.py", line 214, in <module>
+    finish_reason_str = genai.types.FinishReason(finish_reason_val).name
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'google.generativeai.types' has no attribute 'FinishReason'
+Candidate 2 raw object: content {
+  parts {
+    text: "<scenario>\n# The task relates to the following initial situation:\n\nA large online retailer maintains a vast warehouse network to efficiently fulfill customer orders. Each warehouse stocks a variety of products, and inventory levels fluctuate throughout the day as new shipments arrive and orders are processed.  To optimize warehouse operations, the company needs a system to track and manage inventory levels in real-time.\n</scenario>\n\n<problem>\n# 1. Task\n\nThe company wants to implement a system to identify products that are running low in stock and need to be reordered.  For each product in each warehouse, a reorder point has been defined.  When the quantity of a product falls below this reorder point, a reorder request should be generated.\n\nDevelop an algorithm to process inventory updates and generate reorder requests as needed.\n</problem>\n\n<data_elements>\n## Inventory Item Class\n\nThe `InventoryItem` class represents a product in a specific warehouse.\n\n@startuml\nclass InventoryItem {\n- productId : Integer\n- warehouseId : Integer\n- quantity : Integer\n- reorderPoint : Integer\n}\n@enduml\n\nPublic getter and setter methods are available for each attribute.\n\n\n## Inventory Update Format\n\nInventory updates are received as a stream of records, each representing a change in the quantity of a specific product in a particular warehouse.  Each record is a string in the following comma-separated format:\n\n`productId,warehouseId,quantityChange`\n\n\n## Example Inventory Updates\n\n```\n123,456,+50  // 50 units of product 123 added to warehouse 456\n456,789,-20  // 20 units of product 456 removed from warehouse 789\n123,456,-30  // 30 units of product 123 removed from warehouse 456\n789,456,+100 // 100 units of product 789 added to warehouse 456\n```\n\n\n## Helper Function\n\nA helper function `getInventoryItem(productId, warehouseId)` is available.  This function takes a `productId` and `warehouseId` as input and returns the corresponding `InventoryItem` object.  If no such object exists, it creates a new `InventoryItem` with the given `productId` and `warehouseId`, initializes the `quantity` to 0, and sets the `reorderPoint` to a default value of 100.\n\n## Output Format\n\nThe algorithm should output a list of reorder requests.  Each reorder request should be a string in the following format:\n\n`Product {productId} is low in stock at warehouse {warehouseId}.  Current quantity: {quantity}, Reorder point: {reorderPoint}`\n</data_elements>\n\n<pseudocode_task>\nDevelop an algorithm for a function\n\n`processInventoryUpdates(updates : array of String) : array of String`\n\nthat takes an array of inventory update strings as input and returns an array of reorder request strings.\n\nRepresent the algorithm in pseudocode.\n\n`process_inventory_updates(updates : array of String) : array of String`\n</pseudocode_task>\n"
+  }
+  role: "model"
+}
+finish_reason: STOP
+index: 1
+avg_logprobs: -0.14500630395652275
+
+--- Processing Candidate 3 of 3 ---
+Candidate 3 has text content.
+Unexpected error processing candidate 3: module 'google.generativeai.types' has no attribute 'FinishReason'
+Traceback (most recent call last):
+  File "c:\studium\trainer\trainer\googleAI_x3.py", line 214, in <module>
+    finish_reason_str = genai.types.FinishReason(finish_reason_val).name
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'google.generativeai.types' has no attribute 'FinishReason'
+Candidate 3 raw object: content {
+  parts {
+    text: "<scenario>\n# The task relates to the following initial situation:\n\nThe online retailer \"Bookworm Delights\" is experiencing rapid growth and needs to optimize its warehouse management system.  Currently, books are stored on shelves identified by a unique alphanumeric code.  The warehouse workers spend significant time searching for specific books due to the lack of an efficient lookup system.\n</scenario>\n\n<problem>\n# 1. Task\n\nBookworm Delights wants to implement a system to quickly determine the shelf location of a book given its ISBN. To achieve this, they need a function that takes a book\'s ISBN and returns the shelf code where the book is located. If the book is not found in the warehouse, the function should return a specific \"not found\" code.\n</problem>\n\n<data_elements>\nThe warehouse inventory is represented by a data structure called `BookInventory`.  This structure stores information about each book and its location.\n\n## BookInventory Class\n\n@startuml\nclass BookInventory {\n    + getShelfCode(isbn: String): String\n    + addBook(isbn: String, shelfCode: String): void\n    .. Other methods ..\n}\n@enduml\n\nThe `BookInventory` class provides the following relevant methods:\n\n* `getShelfCode(isbn: String): String`: Returns the shelf code associated with the given ISBN.  If the ISBN is not found, returns the string \"NOT_FOUND\".\n* `addBook(isbn: String, shelfCode: String): void`: Adds a book with the given ISBN and shelf code to the inventory.\n\n## Example Usage\n\n```java\nBookInventory inventory = new BookInventory();\ninventory.addBook(\"978-0321765723\", \"A12\");\ninventory.addBook(\"978-0132350884\", \"B03\");\n\nString shelfCode = inventory.getShelfCode(\"978-0321765723\"); // shelfCode will be \"A12\"\nString shelfCode2 = inventory.getShelfCode(\"978-1234567890\"); // shelfCode2 will be \"NOT_FOUND\"\n```\n\nThe internal implementation of `BookInventory` (e.g., using a hash table or a tree) is not relevant for this exercise. You can assume that the `addBook` and `getShelfCode` methods are already implemented and work correctly.\n</data_elements>\n\n<pseudocode_task>\nCreate a function `locateBook(isbn: String, inventory: BookInventory): String` that takes a book\'s ISBN and a `BookInventory` object as input and returns the shelf code where the book is located.\n\nThe function should utilize the `getShelfCode` method of the `BookInventory` object to retrieve the shelf code.  If the book is not found, the function should return \"NOT_FOUND\".\n\nRepresent the algorithm in pseudocode.\n\nlocate_book(isbn: String, inventory: BookInventory) : String\n</pseudocode_task>\n"
+  }
+  role: "model"
+}
+finish_reason: STOP
+index: 2
+avg_logprobs: -0.14010941658135267
+
+Finished processing candidates. Saved 0 of 3 received answers.
+Script execution finished.

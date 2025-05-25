@@ -1,0 +1,71 @@
+# Die Aufgabe bezieht sich auf folgende Ausgangssituation:
+
+In Kiel soll das Nahverkehrssystem (KVAG) um eine neue Stadtbahn erweitert werden. In Zusammenhang mit dieser Erweiterung sollen die IT-Systeme der KVAG erweitert werden. Dazu werden verschiedene Teilprojekte festgelegt. Diese betreffen unter anderem die Fahrplanauskunft, die Buchungssysteme, die Anzeigen und die Vernetzung. Alle Teilprojekte sollen auch hinsichlich der Anforderungen von Datenschutz und Datensicherheit untersucht werden.
+
+# 1.Aufgabe
+Die KVAG möchte ihre Fahrpläne besser an den tatsächlich vorhandnen Fahrzeiten ausrichten. Dazu wurden die Abfahrtszeiteneiner Bahn an den einzelnnen Haltestellen für eine Fahrt einer Bahnlinie an mehreren Tagen gemessen.
+
+Für jeden Tag ist festgehalten, wann die Bahn die nachfolgenden Haltestellen verlassen hat (siehe Array zeiten).
+
+## Bildbeschreibung
+
+- Das Bild zeigt die Haltestellen und Streckenabschnitte
+- Haltestelle 0 ist Abfahrt
+- Streckenabschnitt 0 befindet sich zwischen Halteselle 0 und Haltestelle 1
+- Streckenabschnitt 1 befindet sich zwischen Halteselle 1 und Haltestelle 2
+- und so weiter
+- Streckenabschnitt 14 befindet sich zwischen Halteselle 14 und Haltestelle 15
+- Haltestelle 15 ist Endstation
+
+## Beschreibung der Klasse AbfahrtszeitenEs existiert eine Klasse Abfahrtszeit, mit deren Attribute ein Datum, eine Haltestellennummer, die planmäßige Abfahrtszeit(in Minuten seit Mitternacht) und die tatsächliche Abfahrtszeit (ebenfalls in Minuten) gespeichert wird. Für die Endstationsind hier die planmäßige bzw. tatsächliche Ankunftszeiten gespeichert.
+
+## Klasse Abfahrtszeiten
+
+@startuml
+class Abfahrtszeit {
+    - datum : Date
+    - haltestellenNr : int
+    - planAbfahrt : int // Geplante Abfahrtszeit in Minuten seit Mitternacht
+    - istAbfahrt : int  // Tatsächliche Abfahrtszeit in Minuten seit Mitternacht
+}
+@enduml
+
+Für jedes Attribut ist eine öffentliche Get-Methode vorhanden.
+
+In dem eindimensionalen Array zeiten vom Typ Abfahrtszeit sind die Daten des untersuchten Zeitraums gespeichert. Ineiner Zelle sind die Daten eines Abfahrtszeit-Objektes aufgeführt.
+
+## Auflistung der Daten des Arrays zeiten
+|Datum|Haltestellen Nummer|Planmäßige Abfahrt|Tatsächliche Abfahrt|
+|---|---|---|---|
+|1.9.24|0|480|480|
+|1.9.24|1|483|483|
+|1.9.24|2|485|486|
+|...||||
+|1.9.24|15|579|583|
+|2.9.24|0|480|480|
+|2.9.24|1|483|484|
+|...||||
+|2.9.24|15|579|582|
+|...||||
+
+Die Fahrzeit auf einer Strecke ist die Differenz zweier Abfahrtszeiten aufeinanderfolgender Haltestellen.Eine Verspätung liegt vor, wenn die Fahrzeit auf einer Strecke mehr als zwei Minuten länger war als die planmäßige Fahrzeit.
+
+Es soll ein Algorithmus für eine Funktion
+
+ermittleFahrzeiten(Abfahrtszeit[] zeiten) : Integer[]
+
+entwickelt werden, der für jede der 15 Strecken die Anzahl der Verspätungen ermittlet.
+
+Die ermittelten Häufigkeiten sollen in einem eindimensionalen Array vom Typ Integer gespeichert und von der Funktion zurückgegeben werden.
+
+## Ergebnis-Array (Beispiel):
+|Index|Anzahl Fahrzeiten > 2|Kommentar|
+|0|0| Anzahl Verspätungen (im Beispiel 0) auf der Strecke 0|
+|1|1| ... auf der Strecke 1|
+|0|0| ... auf der Strecke 2|
+|...|...|...|
+|14|3| ... auf der Strecke 14|
+
+Stellen Sie den Algorithmus in Pseudocode dar.
+
+ermittle_fahrzeiten(Abfahrtszeit[] zeiten) : Integer[]

@@ -1,0 +1,80 @@
+# Library Fine Calculation Exercise
+
+## Scenario
+
+The "Digital Library Hub" is developing a new module for its library management software. This module aims to help librarians efficiently track book loans, identify overdue items, and calculate potential fines owed by patrons. Accurate tracking is essential for maintaining inventory and ensuring fair access to resources for all users.
+
+## Problem (25 points)
+
+The library needs an automated way to generate a summary of total potential fines for each patron with overdue books. A book is considered overdue if it has not been marked as returned (`isReturned` is false) and the current date is past the book's due date.
+
+The system processes a list of active book loans. For each loan, it needs to determine if the book is overdue. If it is, a fine should be calculated based on a fixed daily rate (`DAILY_FINE_RATE = 0.50`) multiplied by the number of days the book is overdue. Finally, the system must aggregate the total fines for each patron who has one or more overdue books.
+
+## Data Elements
+
+The following class represents a single book loan:
+
+```plantuml
+@startuml
+class BookLoan {
+- loanId : String
+- userId : String
+- bookId : String
+- checkoutDate : Date
+- dueDate : Date
+- isReturned : Boolean
+}
+@enduml
+Public access methods (getters) are available for each attribute (e.g., getUserId(), getDueDate(), isReturned()).
+
+The following helper functions are available for date manipulation:
+Method	Description
+getCurrentDate() : Date	Returns the current system date.
+daysBetween(d1: Date, d2: Date) : Integer	Calculates the number of full days between date d1 and d2. Returns a positive integer if d2 is after d1, 0 if they are the same day, and negative otherwise.
+A fixed daily fine rate applies to all overdue books:
+
+DAILY_FINE_RATE = 0.50 (currency units)
+Input Data Example:
+
+An array or list named activeLoans containing objects of type BookLoan.
+
+loanId	userId	bookId	checkoutDate	dueDate	isReturned
+L001	U101	B503	2025-04-01	2025-04-15	false
+L002	U102	B711	2025-04-05	2025-04-26	false
+L003	U101	B234	2025-04-10	2025-04-24	false
+L004	U103	B503	2025-04-12	2025-05-03	false
+L005	U102	B999	2025-04-18	2025-05-02	true
+L006	U101	B112	2025-04-20	2025-05-11	false
+...	...	...	...	...	...
+
+In Google Sheets exportieren
+Assume the current date for calculation is 2025-04-30.
+
+Output Data Structure Example:
+
+A map (or dictionary) where keys are userId (String) and values are the total calculated fine (Double) for that user.
+
+Example based on the input above and current date 2025-04-30:
+
+Loan L001 (U101): Due 2025-04-15. Overdue by daysBetween('2025-04-15', '2025-04-30') = 15 days. Fine = 15 * 0.50 = 7.50
+Loan L002 (U102): Due 2025-04-26. Overdue by daysBetween('2025-04-26', '2025-04-30') = 4 days. Fine = 4 * 0.50 = 2.00
+Loan L003 (U101): Due 2025-04-24. Overdue by daysBetween('2025-04-24', '2025-04-30') = 6 days. Fine = 6 * 0.50 = 3.00
+Loan L004 (U103): Due 2025-05-03. Not overdue. Fine = 0.00
+Loan L005 (U102): Returned. Fine = 0.00
+Loan L006 (U101): Due 2025-05-11. Not overdue. Fine = 0.00
+Total Fines Map:
+
+{
+  "U101": 10.50,  // (7.50 + 3.00)
+  "U102": 2.00
+}
+(The function should only return entries for users with a total fine greater than zero.)
+
+Pseudocode Task
+Develop an algorithm in pseudocode for the following function:
+
+calculateTotalFines(activeLoans: List of BookLoan) : Map of String to Double
+
+This function processes the provided list of BookLoan objects to calculate the total overdue fine accumulated by each user, according to the rules defined in the problem description and using the available data elements and helper functions.
+
+The function must return a map where keys are user IDs (String) and values are the corresponding total fine amounts (Double). Only include users with a total fine greater than zero in the resulting map.

@@ -1,0 +1,71 @@
+# The task relates to the following initial situation:
+
+The local transport system (KVAG) in Kiel is to be expanded to include a new light rail system. In connection with this expansion, the KVAG's IT systems are to be expanded. Various subprojects are being defined for this purpose. These include timetable information, booking systems, displays, and networking. All subprojects are to be examined with regard to data protection and data security requirements.
+
+# 1. Task
+KVAG wants to better align its timetables with actual travel times. To this end, the departure times of a train at individual stops for a journey on a train line were measured on several days.
+
+For each day, the time the train left the subsequent stops is recorded (see array times).
+
+## Image description
+
+- The image shows the stops and route sections
+- Stop 0 is the departure point
+- Route section 0 is between stop 0 and stop 1
+- Route section 1 is between stop 1 and stop 2
+- and so on
+- Route section 14 is between stop 14 and stop 15
+- Stop 15 is the final stop
+
+## Description of the Departure Times class There is a Departure Time class whose attributes store a date, a stop number, the scheduled departure time (in minutes since midnight), and the actual departure time (also in minutes). The scheduled and actual arrival times for the final stop are stored here.
+
+## Class Departure Times
+
+@startuml
+class DepartureTime {
+- date : Date
+- stopNumber : int
+- plannedDeparture : int // Planned departure time in minutes since midnight
+- actualDeparture : int // Actual departure time in minutes since midnight
+}
+@enduml
+
+A public getter method is available for each attribute.
+
+The one-dimensional array times of type DepartureTime stores the data for the period under review. The data of a DepartureTime object is listed in a cell.
+
+## Listing of the data of the array times
+|Date|StopNumber|Scheduled Departure|Actual Departure|
+|---|---|---|---|
+|1.9.24|0|480|480|
+|1.9.24|1|483|483|
+|1.9.24|2|485|486|
+|...||||
+|1.9.24|15|579|583|
+|2.9.24|0|480|480|
+|2.9.24|1|483|484|
+|...||||
+|2.9.24|15|579|582|
+|...||||
+
+The travel time on a route is the difference between two departure times from consecutive stops. A delay occurs if the travel time on a route is more than two minutes longer than the scheduled travel time.
+
+An algorithm for a function
+
+determineTravelTimes(DepartureTime[] times) : Integer[]
+
+is to be developed that determines the number of delays for each of the 15 routes.
+
+The determined frequencies are to be stored in a one-dimensional array of type Integer and returned by the function.
+
+## Result array (example):
+|Index|Number of travel times > 2|Comment|
+|0|0| Number of delays (0 in the example) on route 0|
+|1|1| ... on route 1|
+|0|0| ... on route 2|
+|...|...|...|
+|14|3| ... on route 14|
+
+Represent the algorithm in pseudocode.
+
+determine_travel_times(Departure_time[] times) : Integer[]

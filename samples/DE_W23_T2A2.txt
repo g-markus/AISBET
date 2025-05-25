@@ -1,0 +1,52 @@
+Die Aufgaben 1 bis 4 beziehen sich auf die folgende Ausgangssituation:
+Die AMAG Soft GmbH hat sich auf Software-Entwicklung im gesamten Umfeld vom Anbau bis zum Vertrieb von Weinprodukten spezialisiert.
+
+Über lokale Messstellen im Weinberg und autonome Drohnen können Daten, wie zum Beispiel Niederschläge, Temperatur und Blattfärbungen ermittelt werden.
+
+1. Aufgabe (25 Punkte)
+
+Für den Flug der Drohnen soll die Reihenfolge bestimmt werden, in der vorgegebene Geopositionen angeflogen werden.
+
+Ausgehend von der aktuellen Position soll immer die Position als nächstes angeflogen werden, die der aktuellen Position am nächsten liegt.
+
+Die anzufliegenden Positionen liegen in einem eindimensionalen Array `geoPositions` als Objekte der Klasse `GeoPos` vor.
+
+@startuml
+class GeoPos {
+  - latitude: double
+  - longitude: double
+  - altitude: double
+}
+@enduml
+
+Zu jedem Attribut sind öffentliche Zugriffsmethoden (set/get) vorhanden.
+
+Für Entfernungsberechnungen zwischen Geopositionen kann die Methode `getDistance` der Klasse `GeoCalculator` verwendet werden:
+
+@startuml
+class GeoCalculator {
+  + {static} getDistance(pos1: GeoPos, pos2: GeoPos): double
+}
+@enduml
+
+Der Algorithmus für den Drohnenflug soll sein Ergebnis in einem Array `flightPositions` speichern und zurückgeben. Die Arbeitsweise des Algorithmus `calculateFlight()` wird wie folgt beschrieben:
+
+- Das Array `geoPositions` kann durch den Algorithmus verändert werden.
+- Die Geoposition mit dem Index 0 des Arrays `geoPositions` wird zur ersten aktuellen Position. Diese Position wird im Array `flightPositions` gespeichert (Startposition!) und kann dann aus dem Array der noch anzufliegenden Positionen (`geoPositions`) gelöscht werden. Hinweis: bereits implementiert, siehe Vorgabe.
+- Solange noch Geopositionen im Array `geoPositions` vorhanden sind:
+  Ermitteln der Position im Array `geoPositions` mit der kürzesten Entfernung zur aktuellen Position.
+  Diese Position wird im Array `flightPositions` gespeichert und zur neuen aktuellen Position.
+  Diese Position kann dann aus dem Array `geoPositions` gelöscht werden.
+
+Hinweis: Der größte Doublewert kann mit `Double.MAX_VALUE` abgerufen werden.
+Vervollständigen Sie dahingehend den folgenden Pseudocode.
+
+calculateFlight(geoPositions: GeoPos[]) : GeoPos[]
+
+flight_positions = new GeoPos[geoPositions.length]  // Array der angeflogenen
+                                                    // Positionen
+flightPositions[0] = geoPositions[0]                // Position 0 als Startposition
+currentPos = geoPositions[0]
+geoPositions.remove(0)                              // aus dem Array der noch
+                                                    // anzufliegenden Positionen
+                                                    // entferne

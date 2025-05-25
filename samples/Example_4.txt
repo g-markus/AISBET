@@ -1,0 +1,60 @@
+<example>
+<scenario>
+Tasks 1 refers to the following initial situation:
+AMAG Soft GmbH specializes in software development for the entire field, from cultivation to distribution of wine products.
+
+Data such as precipitation, temperature, and leaf coloration can be collected using local measuring points in the vineyard and autonomous drones.
+</scenario>
+
+<problem>
+Task 1 (25 points)
+
+The order in which the drones fly to specified geopositions must be determined.
+
+Starting from the current position, the position closest to the current position should always be flown to next.
+</problem>
+
+<data_elements>
+The positions to be flown to are stored in a one-dimensional array `geoPositions` as objects of the class `GeoPos`.
+
+@startuml
+class GeoPos {
+- latitude: double
+- longitude: double
+- altitude: double
+}
+@enduml
+
+Public access methods (set/get) are available for each attribute.
+
+The `getDistance` method of the `GeoCalculator` class can be used to calculate distances between geopositions:
+
+@startuml
+class GeoCalculator {
++ {static} getDistance(pos1: GeoPos, pos2: GeoPos): double
+}
+@enduml
+
+The algorithm for the drone flight should store and return its result in an array `flightPositions`. The operation of the `calculateFlight()` algorithm is described as follows:
+
+- The `geoPositions` array can be modified by the algorithm.
+- The geoposition with index 0 of the `geoPositions` array becomes the first current position. This position is stored in the `flightPositions` array (starting position!) and can then be deleted from the array of positions still to be flown to (`geoPositions`). Note: already implemented, see default.
+- As long as there are still geopositions in the `geoPositions` array:
+Determine the position in the `geoPositions` array with the shortest distance to the current position.
+This position is stored in the `flightPositions` array and becomes the new current position.
+This position can then be deleted from the `geoPositions` array.
+
+Note: The largest double value can be retrieved using `Double.MAX_VALUE`.
+</data_elements>
+
+<pseudocode_task>
+Complete the following pseudocode accordingly.
+
+calculateFlight(geoPositions: GeoPos) : GeoPos
+
+flight_positions = new GeoPos[geoPositions.length] // Array of the positions flown to
+flightPositions = geoPositions // Position 0 as the starting position
+currentPos = geoPositions
+geoPositions.remove(0) // remove from the array of positions still to be flown to
+</pseudocode_task>
+</example>

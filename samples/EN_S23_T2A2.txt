@@ -1,0 +1,67 @@
+# Task 1 refers to the following initial situation:
+
+The "Wilder Garten" park in Cologne, with its rich plant diversity, its beautiful winding paths, its many shady spots, and its popular attractions, was able to increase its appeal as a local recreational area for many visitors last season. Visitors of all ages and tour operators are among the park's customers.
+
+## 1. Task (25 points)
+
+The park administration would like to obtain an analysis of visitor numbers for all days of a given month.
+
+The following information is therefore recorded for visitor tickets at the entrances and exits:
+
+* The ticket is scanned upon entry, saving the date, time, and number of people (group tickets).
+* Upon exiting, each person is individually recorded with the date and time.
+
+The park is currently open from 9:00 a.m. to 7:00 p.m.
+
+For analysis, we need to record how many people were present for each day of a month from 9:00 a.m. to 9:59 a.m., from 10:00 a.m. to 10:59 a.m., ..., and from 6:00 p.m. to 6:59 p.m.
+
+The following class already exists:
+
+@startuml
+class ComeLeave {
+- date: Date
+- comeInOut: Integer
+- noPeople: Integer
+' ... (Ellipsis in original indicates potentially more members)
+}
+@enduml
+
+Public access methods (set/get) are available for each attribute.
+
+The following methods can be used:
+
+| Method | Description |
+| :-------------------------- | :------------------------------------------------- |
+| `getDay()` of the Date class | Determines the day (1 – 31) for the date |
+| `getHour()` of the Date class | Determines the hour (0 – 23) for the date |
+| `getDaysOfMonth()` of the Date class | Determines the number of days in the month for the date |
+
+The `entry` table of type `ComeLeave` records the arrival and departure times of visitors for the month to be evaluated (one row corresponds to the attributes of an object of type `ComeLeave`):
+
+| date | time | comeInOut <br> 0 = In / 1 = Out | noPeople |
+| :-------- | :---- | :----------------------------- | :------- |
+| ... | ... | ... | ... |
+| 22.5.2023 | 9:00 | 0 | 1 |
+| 22.5.2023 | 9:00 | 0 | 2 |
+| May 22, 2023 | 9:01 AM | 0 | 30 |
+| ... | ... | ... | ... |
+| May 22, 2023 | 12:00 PM | 1 | 1 |
+| May 22, 2023 | 12:01 PM | 0 | 2 |
+| May 22, 2023 | 12:02 PM | 1 | 1 |
+| ... | ... | ... | ... |
+
+Create a function `countVisitors(entry: ComeLeave): Integer[][]` that fulfills the following requirement:
+
+* For each hour of a day (opening hours!) and for each day of the month to be evaluated, the number of people present should be stored in a two-dimensional array of type integer.
+One row should be used for each day of the month and one column for each hour within the opening hours.
+This array is the return value of the `countVisitors()` function.
+A person is counted starting from a certain hourly period when they enter the park during that period. When a person leaves the park, the count is only adjusted accordingly for subsequent periods.
+
+Example array for a result:
+
+| Day\\Hour | 9:00-9:59 | 10:00-10:59 | 11:00-11:59 | 12:00-12:59 | 13:00-13:59 | 14:00-14:59 | 15:00-15:59 | 16:00-16:59 | 17:00-17:59 | 18:00-18:59 |
+| :-------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- |
+| 1 | 23 | 40 | 56 | 120 | 145 | 160 | 140 | 95 | 86 | 45 |
+| 2 | 27 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| 31 | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |

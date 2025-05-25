@@ -1,0 +1,45 @@
+2025-04-30 23:50:19,869 - root - DEBUG - Loading examples...
+2025-04-30 23:50:19,869 - root - DEBUG -   - Loaded: samples\Example_1.txt
+2025-04-30 23:50:19,869 - root - DEBUG -   - Loaded: samples\Example_2.txt
+2025-04-30 23:50:19,869 - root - DEBUG -   - Loaded: samples\Example_3.txt
+2025-04-30 23:50:19,869 - root - DEBUG -   - Loaded: samples\Example_4.txt
+2025-04-30 23:50:19,869 - root - DEBUG -   - Loaded: samples\Example_5.txt
+2025-04-30 23:50:19,869 - root - DEBUG - Loaded 5 examples successfully. Shuffling their order...
+2025-04-30 23:50:19,869 - root - DEBUG - Examples shuffled.
+2025-04-30 23:50:19,875 - root - DEBUG - Shuffled example order: ['Example_3.txt', 'Example_2.txt', 'Example_4.txt', 'Example_5.txt', 'Example_1.txt']
+2025-04-30 23:53:24,911 - root - DEBUG - Loading examples...
+2025-04-30 23:53:24,912 - root - DEBUG -   - Loaded: samples\Example_1.txt
+2025-04-30 23:53:24,912 - root - DEBUG -   - Loaded: samples\Example_2.txt
+2025-04-30 23:53:24,912 - root - DEBUG -   - Loaded: samples\Example_3.txt
+2025-04-30 23:53:24,912 - root - DEBUG -   - Loaded: samples\Example_4.txt
+2025-04-30 23:53:24,913 - root - DEBUG -   - Loaded: samples\Example_5.txt
+2025-04-30 23:53:24,913 - root - DEBUG - Loaded 5 examples successfully. Shuffling their order...
+2025-04-30 23:53:24,913 - root - DEBUG - Examples shuffled.
+2025-04-30 23:53:24,913 - root - DEBUG - Shuffled example order: ['Example_5.txt', 'Example_4.txt', 'Example_2.txt', 'Example_3.txt', 'Example_1.txt']
+2025-04-30 23:54:02,764 - root - DEBUG - Loading examples...
+2025-04-30 23:54:02,764 - root - DEBUG -   - Loaded: samples\Example_1.txt
+2025-04-30 23:54:02,764 - root - DEBUG -   - Loaded: samples\Example_2.txt
+2025-04-30 23:54:02,764 - root - DEBUG -   - Loaded: samples\Example_3.txt
+2025-04-30 23:54:02,764 - root - DEBUG -   - Loaded: samples\Example_4.txt
+2025-04-30 23:54:02,764 - root - DEBUG -   - Loaded: samples\Example_5.txt
+2025-04-30 23:54:02,764 - root - DEBUG - Loaded 5 examples successfully. Shuffling their order...
+2025-04-30 23:54:02,764 - root - DEBUG - Examples shuffled.
+2025-04-30 23:54:02,764 - root - DEBUG - Shuffled example order: ['Example_3.txt', 'Example_1.txt', 'Example_4.txt', 'Example_5.txt', 'Example_2.txt']
+2025-05-05 20:37:06,190 - root - DEBUG - Loading examples...
+2025-05-05 20:37:06,190 - root - DEBUG -   - Loaded: samples\Example_1.txt
+2025-05-05 20:37:06,191 - root - DEBUG -   - Loaded: samples\Example_2.txt
+2025-05-05 20:37:06,191 - root - DEBUG -   - Loaded: samples\Example_3.txt
+2025-05-05 20:37:06,191 - root - DEBUG -   - Loaded: samples\Example_4.txt
+2025-05-05 20:37:06,192 - root - DEBUG -   - Loaded: samples\Example_5.txt
+2025-05-05 20:37:06,192 - root - DEBUG - Loaded 5 examples successfully. Shuffling their order...
+2025-05-05 20:37:06,192 - root - DEBUG - Examples shuffled.
+2025-05-05 20:37:06,192 - root - DEBUG - Shuffled example order: ['Example_2.txt', 'Example_4.txt', 'Example_1.txt', 'Example_5.txt', 'Example_3.txt']
+2025-05-05 20:40:46,305 - root - DEBUG - Loading examples...
+2025-05-05 20:40:46,305 - root - DEBUG -   - Loaded: samples\Example_1.txt
+2025-05-05 20:40:46,305 - root - DEBUG -   - Loaded: samples\Example_2.txt
+2025-05-05 20:40:46,305 - root - DEBUG -   - Loaded: samples\Example_3.txt
+2025-05-05 20:40:46,305 - root - DEBUG -   - Loaded: samples\Example_4.txt
+2025-05-05 20:40:46,305 - root - DEBUG -   - Loaded: samples\Example_5.txt
+2025-05-05 20:40:46,305 - root - DEBUG - Loaded 5 examples successfully. Shuffling their order...
+2025-05-05 20:40:46,305 - root - DEBUG - Examples shuffled.
+2025-05-05 20:40:46,305 - root - DEBUG - Shuffled example order: ['Example_1.txt', 'Example_4.txt', 'Example_3.txt', 'Example_2.txt', 'Example_5.txt']

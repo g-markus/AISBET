@@ -1,0 +1,68 @@
+# Die Aufgaben 1 bezieht sich auf die folgende Ausgangssituation:
+
+Die Parkanlage „Wilder Garten“ in Köln konnte u. a. mit ihrer reichhaltigen Pflanzenvielfalt, ihren schönen verwinkelten Wegen, ihren vielen schattigen Plätzen und ihren beliebten Attraktionen in der letzten Saison ihre Anziehungskraft als Naherholungsfläche für viele Besucher steigern. Besucher aus allen Altersgruppen und auch Reiseveranstalter zählen zu den Kunden der Parkanlage.
+
+## 1. Aufgabe (25 Punkte)
+
+Die Verwaltung des Parks möchte eine Auswertung über die Besucherzahlen für alle Tage eines vorgegebenen Monats erhalten.
+
+Für die Besuchertickets werden daher an den Ein- und Ausgängen folgende Informationen festgehalten:
+
+* Das Ticket wird beim Einlass gescannt und damit das Datum, die Uhrzeit und die Anzahl der Personen (Gruppentickets) gespeichert.
+* Beim Hinausgehen wird jede Person mit Datum und Uhrzeit einzeln erfasst.
+
+Der Park hat aktuell die Öffnungszeiten von 9:00 Uhr bis 19:00 Uhr.
+
+Zur Auswertung soll für jeden Tag eines Monats festgehalten werden, wie viele Personen sich von 9:00 Uhr bis 9:59 Uhr, von 10:00 Uhr bis 10:59 Uhr, ... und von 18:00 Uhr bis 18:59 Uhr aufgehalten haben.
+
+Die folgende Klasse ist bereits vorhanden:
+
+@startuml
+class ComeLeave {
+  - date: Date
+  - comeInOut: Integer
+  - noPeople: Integer
+  ' ... (Ellipsis in original indicates potentially more members)
+}
+@enduml
+
+Für jedes Attribut sind öffentliche Zugriffsmethoden (set/get) vorhanden.
+
+Folgende Methoden können verwendet werden:
+
+| Methode                     | Beschreibung                                       |
+| :-------------------------- | :------------------------------------------------- |
+| `getDay()` der Klasse Date    | Ermittelt zum Datum den Tag (1 – 31)               |
+| `getHour()` der Klasse Date   | Ermittelt zum Datum die Stunde (0 – 23)            |
+| `getDaysOfMonth()` der Klasse Date | Ermittelt zum Datum die Anzahl der Tage im Monat |
+
+In der Tabelle `entry` vom Typ `ComeLeave` sind die Kommen- und Gehenzeiten der Besucher für den auszuwertenden Monat erfasst (eine Zeile entspricht den Attributen eines Objektes vom Typ `ComeLeave`):
+
+| date      | time  | comeInOut <br> 0 = In / 1 = Out | noPeople |
+| :-------- | :---- | :------------------------------ | :------- |
+| ...       | ...   | ...                             | ...      |
+| 22.5.2023 | 9:00  | 0                               | 1        |
+| 22.5.2023 | 9:00  | 0                               | 2        |
+| 22.5.2023 | 9:01  | 0                               | 30       |
+| ...       | ...   | ...                             | ...      |
+| 22.5.2023 | 12:00 | 1                               | 1        |
+| 22.5.2023 | 12:01 | 0                               | 2        |
+| 22.5.2023 | 12:02 | 1                               | 1        |
+| ...       | ...   | ...                             | ...      |
+
+Erstellen Sie eine Funktion `countVisitors(entry: ComeLeave): Integer[][]`, die folgende Anforderung erfüllt:
+
+* Für jede Stunde eines Tages (Öffnungszeiten!) und für jeden Tag des auszuwertenden Monats soll die Anzahl der anwesenden Personen in einem zweidimensionalen Array vom Typ Integer gespeichert werden.
+    Für jeden Tag des Monats soll eine Zeile und für jede Stunde innerhalb der Öffnungszeit eine Spalte verwendet werden.
+    Dieses Array ist der Rückgabewert der Funktion `countVisitors()`.
+    Dabei wird eine Person ab einem Stundenabschnitt gezählt, wenn sie in diesem Abschnitt den Park betreten hat. Wenn eine Person den Park verlässt, wird die Anzahl erst für die nachfolgenden Abschnitte entsprechend korrigiert.
+
+Beispielarray für ein Ergebnis:
+
+| Tag\\Std | 9:00-9:59 | 10:00-10:59 | 11:00-11:59 | 12:00-12:59 | 13:00-13:59 | 14:00-14:59 | 15:00-15:59 | 16:00-16:59 | 17:00-17:59 | 18:00-18:59 |
+| :------- | :-------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- | :---------- |
+| 1        | 23        | 40          | 56          | 120         | 145         | 160         | 140         | 95          | 86          | 45          |
+| 2        | 27        | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         |
+| ...      | ...       | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         |
+| 31       | ...       | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         | ...         |
+

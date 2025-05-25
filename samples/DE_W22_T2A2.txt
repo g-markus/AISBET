@@ -1,0 +1,80 @@
+# Die Aufgabe bezieht sich auf die folgende Ausgangssituation:
+
+Ein bundesweit tätiger Bildungsträger bietet an acht attraktiven Standorten Tagungen, Seminare und Veranstaltungen an. An den Standorten stehen insgesamt 45 Seminarräume mit mehr als 600 IT-Arbeitsplätzen zur Verfügung. Die Trainings sind auch als Online-Trainings buchbar.
+
+Alle IT-Services werden von zwei Rechenzentren ausgeführt.
+
+Da derzeitig nicht alle Schulungs- und Büroräume ausgelastet sind, sollen zukünftig die Raumressourcen den Kunden für individuelle Bedürfnisse zur Verfügung gestellt werden.
+
+---
+
+### 1. Aufgabe (25 Punkte)
+
+Im Rahmen der Erstellung von Lernsoftware soll zunächst ein Sortieralgorithmus für ein Array von Raum-Objekten erstellt werden. Die Sortierung soll aufsteigend nach der Belegungszahl eines Raumes erfolgen.
+
+```plantuml
+@startuml
+class Raum {
+  .. Unspezifizierte Attribute / Methoden ..
+  + getBelegung(): Integer
+  .. Unspezifizierte Attribute / Methoden ..
+}
+@enduml
+
+Der Sortieralgorithmus kann beispielsweise nach folgendem Verfahren arbeiten:
+
+Vergleich der ersten beiden Elemente, gegebenenfalls tauschen
+Vergleich des 2. und 3. Elementes, gegebenenfalls tauschen
+Fortführen des n. und n+1. Elementes bis zum Ende des Arrays
+Wiederholen, bis das Array sortiert ist
+
+a) Erstellen Sie einen Algorithmus, der ein Array von Raum-Objekten nach dem genannten oder einem alternativen Verfahren sortiert. Geben Sie den Algorithmus in Pseudocode an. (10 Punkte)
+
+void sort(raeume: Array von Raum)
+
+b) Zur Flexibilisierung des Sortieralgorithmus wird eine Funktion benötigt, die ...
+    * den Wert 0 zurückgibt, wenn die zwei der Funktion übergebenen Objekte gleich („groß“) sind,
+    * einen positiven Wert zurückgibt, wenn der erste Parameter größer als der zweite ist und
+    * einen negativen Wert im verbleibenden Fall.
+
+Erstellen Sie eine Funktion `vergleicheMitarbeiter(Mitarbeiter m1, Mitarbeiter m2)`, die zwei Mitarbeiter-Objekte als Parameter bekommt und einen entsprechenden Rückgabewert liefert. Der Vergleich der Mitarbeiter soll über das Gehalt vorgenommen werden.
+
+Geben Sie den Algorithmus in Pseudocode, Struktogramm oder als PAP an. *(5 Punkte)*
+
+```plantuml
+@startuml
+class Mitarbeiter {
+  .. Unspezifizierte Attribute / Methoden ..
+  + getGehalt(): Double
+  .. Unspezifizierte Attribute / Methoden ..
+}
+@enduml
+
+vergleicheMitarbeiter(Mitarbeiter m1, Mitarbeiter m2): Integer
+
+c) Zur Erstellung eines verbesserten Sortieralgorithmus soll die vorhandene generische Klasse `Function<T>` verwendet werden. Ein Function-Objekt kann eine Funktion speichern, die zwei Parameter vom Typ T erwartet und einen Integerwert zurückgibt.
+
+Verwendung eines `Function<T>`-Objektes (Beispiel):
+
+| Aktion                                          | Code-Beispiel                                     |
+| :---------------------------------------------- | :------------------------------------------------ |
+| Speichern einer Funktion in einem Function-Objekt: | `Function<Mitarbeiter> f = vergleicheMitarbeiter;` |
+| Aufruf der gespeicherten Funktion:              | `f(mitarbeiter1, mitarbeiter2)`                   |
+
+Zusätzlich soll für den neuen Sortieralgorithmus die vorhandene generische Klasse `List<T>` verwendet werden, die Objekte vom Typ T speichert.
+
+```plantuml
+@startuml
+class "List<T>" as List {
+  .. Unspezifizierte Attribute / Methoden ..
+  + get(index: Integer) : T
+  + set(index: Integer, element: T) : void
+  + size() : Integer
+  .. Unspezifizierte Attribute / Methoden ..
+}
+@enduml
+
+Aktualisieren Sie Ihren Sortieralgorithmus so, dass dieser als Parameter ein List<T>-Objekt und ein Function<T>-Objekt erhält. Für den Vergleich im Sortieralgorithmus soll die im Function<T>-Objekt gespeicherte Funktion benutzt werden. (7 Punkte)
+
+sort(List<T> liste, Function<T> f): void
+
