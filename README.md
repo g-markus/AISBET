@@ -1,4 +1,4 @@
-# AISBET
+# AISBET - AI-Generation of Scenario-Based Exam Tasks
 
 This repository contains the source code used in the paper "AI-Generation of Scenario-Based Exam Tasks".
 
@@ -24,6 +24,8 @@ The prompt used for generation is logged to prompt_to_generate_*timestamp*.md"
 my_script.log holds debug messages of last execution.
 
 ## Description of files
+
+```plaintext
 root
 |-output_and_logs holds the generaded excercises and log files (prompts used)
 |
@@ -42,5 +44,5 @@ root
 |-source
 | |-googleAI-x3.py test of generating 3 exercises at one shot, test no longer used
 | |-googleAI.py main
-
+```
 
