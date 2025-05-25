@@ -27,23 +27,23 @@ my_script.log holds debug messages of last execution.
 
 ```plaintext
 root
-|-output_and_logs holds the generaded excercises and log files (prompts used)
+|-output_and_logs  holds the generatd excercises and log files (prompts used)
 |
 |-samples
-| |-DE_....txt German example exams
-| |-EN_....txt Example exams translated to english
-| |-Example_x.txt Examples finally used for creation
-| |-first_answer.txt output of very first try
-| |-p1.txt Prompt used for very first try (examples excluded)
-| |-prompt_no_examples_1.txt first evolution of prompt
-| |-prompt_no_examples_2.txt second evolution of prompt
-| |-prompt_no_examples_3.txt third, actual used evolution of prompt
-| |-my_script.log log of last run with debug messages
-| |-pdf_erl holds original pdf of example examns not provided here
+| |-DE_....txt  German example exams
+| |-EN_....txt  Example exams translated to english
+| |-Example_x.txt  Examples finally used for creation
+| |-first_answer.txt  output of very first try
+| |-p1.txt  Prompt used for very first try (examples excluded)
+| |-prompt_no_examples_1.txt  first evolution of prompt
+| |-prompt_no_examples_2.txt  second evolution of prompt
+| |-prompt_no_examples_3.txt  third, actual used evolution of prompt
+| |-my_script.log  log of last run with debug messages
+| |-pdf_erl  holds original pdf of example examns not provided here
 |
 |-source
-| |-googleAI-x3.py test of generating 3 exercises at one shot, test no longer used
-| |-googleAI.py main
+| |-googleAI-x3.py  test of generating 3 exercises at one shot, test no longer used
+| |-googleAI.py  main
 ```
 
 
