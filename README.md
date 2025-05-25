@@ -19,7 +19,7 @@ The creation is done by "few-shot-prompting", providing 5 examples of old examns
 
 Output goes to root directory "generated_exercise_*timestamp*.md"
 
-The prompt used for generation is logged to prompt_to_generate_*timestamp*.md"
+The prompt used for generation is logged to "prompt_to_generate_*timestamp*.md"
 
 my_script.log holds debug messages of last execution.
 
@@ -27,7 +27,7 @@ my_script.log holds debug messages of last execution.
 
 ```plaintext
 root
-|-output_and_logs  holds the generatd excercises and log files (prompts used)
+|-output_and_logs  holds the generated excercises and log files (prompts used)
 |
 |-samples
 | |-DE_....txt  German example exams
