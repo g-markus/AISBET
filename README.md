@@ -39,7 +39,7 @@ root
 | |-prompt_no_examples_2.txt  second evolution of prompt
 | |-prompt_no_examples_3.txt  third, actual used evolution of prompt
 | |-my_script.log  log of last run with debug messages
-| |-pdf_erl  holds original pdf of example examns not provided here
+| |-pdf_erl  holds original pdf of example examns not provided at git
 |
 |-source
 | |-googleAI-x3.py  test of generating 3 exercises at one shot, test no longer used

@@ -1,5 +1,6 @@
 # pdf-samples
 samples/pdf_erl/
+source\.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
